@@ -9,7 +9,7 @@
     "routes": [
         {
             "src": "(.*)",
-            "desc": "src/server.ts"
+            "dest": "/src/server.ts"
         }
     ]
 }
