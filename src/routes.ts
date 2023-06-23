@@ -32,7 +32,7 @@ router.get('/', (req: Request, res: Response) => {
 router.post("/users", new CreateUserController().handle)
 router.post("/session", new AuthUserController().handle)
 // router.get("/me", isAuthenticated, new DetailUserController().handle)
-router.get("/meus", isAuthenticated, new DetailUserController().handle);
+router.get("/me", isAuthenticated, new DetailUserController().handle);
 router.put("/users", isAuthenticated, new UpdateUserController().handle)
 
 // --- ROTA HAIRCUTS
