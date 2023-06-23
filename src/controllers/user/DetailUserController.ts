@@ -10,7 +10,12 @@ class DetailUserController {
 
         const detailUser = await userDetailService.execute(user_id);
 
-        return res.json(detailUser)
+        const response = {
+            detailUser,
+            message: "Você esta na rota / meus"
+        }
+
+        return res.json(response)
     }
 }
 
