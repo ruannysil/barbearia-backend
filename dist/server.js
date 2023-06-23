@@ -855,7 +855,7 @@ router.get("/", (req, res) => {
 });
 router.post("/users", new CreateUserController().handle);
 router.post("/session", new AuthUserController().handle);
-router.get("/me", isAuthenticated, new DetailUserController().handle);
+router.get("/meus", isAuthenticated, new DetailUserController().handle);
 router.put("/users", isAuthenticated, new UpdateUserController().handle);
 router.post("/haircut", isAuthenticated, new CreateHaircutController().handle);
 router.get("/haircuts", isAuthenticated, new ListHaircutController().handle);
