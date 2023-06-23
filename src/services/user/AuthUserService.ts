@@ -41,16 +41,16 @@ class AuthUserService {
             }
         )
 
-        return { 
-           id: user?.id,
-           name: user?.name,
-           email: user?.email,
-           endereco: user?.endereco,
-           token: token,
-           subscriptions: user.subscriptions ? {
-            id: user?.subscriptions?.id,
-            status: user?.subscriptions?.status
-           } : null 
+        return {
+            id: user?.id,
+            name: user?.name,
+            email: user?.email,
+            endereco: user?.endereco,
+            token: token,
+            subscriptions: user.subscriptions ? {
+                id: user?.subscriptions?.id,
+                status: user?.subscriptions?.status
+            } : null
         }
     }
 }

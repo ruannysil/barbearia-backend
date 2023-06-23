@@ -53,4 +53,4 @@ router.post("/subscribe", isAuthenticated, new SubscribeController().handle)
 router.post("/webhooks", express.raw({ type: 'application/json' }), new WebhooksController().handle)
 router.post("/create-portal", isAuthenticated, new CreatePortalController().handle)
 
-export { router };  
+export { router };

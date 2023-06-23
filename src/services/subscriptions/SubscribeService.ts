@@ -1,18 +1,18 @@
 import prismaClient from "../../prisma";
 import Stripe from 'stripe';
 
-interface SubscribeRequest{
+interface SubscribeRequest {
   user_id: string;
 }
 
 class SubscribeService {
-  async execute({ user_id }: SubscribeRequest){
-   
+  async execute({ user_id }: SubscribeRequest) {
+
     const stripe = new Stripe(
       process.env.STRIPE_API_KEY,
       {
         apiVersion: '2022-11-15',
-        appInfo:{
+        appInfo: {
           name: 'barberpro',
           version: '1',
         }
@@ -21,24 +21,24 @@ class SubscribeService {
 
     // Buscar o usuario e cadastrar ele no stripe caso nao tenha cadastrado
     const findUser = await prismaClient.user.findFirst({
-      where:{
+      where: {
         id: user_id
       }
     })
 
     let customerId = findUser.stripe_customer_id
 
-    if(!customerId){
+    if (!customerId) {
       // Caso nao tenha criamos como cliente lá no stripe
       const stripeCustomer = await stripe.customers.create({
         email: findUser.email
       })
 
       await prismaClient.user.update({
-        where:{
+        where: {
           id: user_id
         },
-        data:{
+        data: {
           stripe_customer_id: stripeCustomer.id
         }
       })
@@ -68,4 +68,4 @@ class SubscribeService {
   }
 }
 
-export { SubscribeService } 
+export { SubscribeService }
